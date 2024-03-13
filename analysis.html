@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Winnipeg Narcan Administration Data</h1>
+            <h2>Examine Narcan administrations based on different criteria</h2>
+            <p>Naloxone, also known as Narcan, is a medication used to rapidly reverse opioid overdose. Naloxone is a critical tool in emergency situations involving opioid overdose, including overdoses caused by heroin, fentanyl, and prescription opioid medications.</p>
+            <p>This dataset shows total incidents where Narcan (Naloxone) was administered to a patient 1 or more times. Each record represents one patient. <br> Note: 'Incident Number' can appear more than once as each Incident Number can have more than one unique patient.
+            </p>
+        </div>
+    
+        <nav id="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="analysis.html">Analysis</a></li>
+            </ul>
+        </nav>
+
+        <div class="chartContainer">
+            <h3>Age Groups with Highest Incidence</h3>
+            <canvas id="ageChart"></canvas>
+        </div>
+
+        <div class="chartContainer">
+            <h3>Neighborhoods with Highest Incidence</h3>
+            <canvas id="neighborhoodChart"></canvas>
+        </div>
+
+        <div class="chartContainer">
+            <h3>Gender Distribution</h3>
+            <canvas id="genderChart"></canvas>
+        </div>
+
+        <div class="chartContainer">
+            <h3>Incidents Over Time</h3>
+            <canvas id="incidentsOverTimeChart"></canvas>
+        </div>
+
+        <footer>
+            <small>Data taken from <a href="https://data.winnipeg.ca/Fire-and-Paramedic-Service/Narcan-Administrations/qd6b-q49i/about_data">City of Winnipeg Open Data Portal</a>
+            </small>
+        </footer>
+
+    </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="analysisScript.js"></script>
+
+
+    
+</body>
+</html>

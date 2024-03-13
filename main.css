@@ -1,0 +1,209 @@
+/******w**************
+    
+    Assignment 4 Stylesheet
+    Name: Faye Vaquiar
+    Date: March 10, 2024
+    Description: 
+
+*********************/
+body {
+    font-family: "Oxygen", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e8f5f983;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-bottom: 65px;
+}
+
+h1 {
+    margin-top: 65px;
+    font-size: 3.42em;
+    padding: 0;
+    margin: 0;
+    letter-spacing: 0.1em;
+    font-weight: 350;
+}
+
+h2 {
+    font-weight: lighter;
+    font-size: 1.2em;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 65px;
+}
+
+#search {
+    background-color: #E8F5F9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+select, input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #00C0DE;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #00b1cc;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table tr:nth-child(even) {
+    background-color: #E8F5F9;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #00C0DE;
+    color: #fff;
+}
+
+#pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#prevPageBtn, #nextPageBtn {
+    background-color: #00C0DE;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+}
+
+#prevPageBtn {
+    float: left;
+}
+
+#nextPageBtn {
+    float: right;
+}
+
+#prevPageBtn:hover, #nextPageBtn:hover {
+    background-color: #00b1cc;
+}
+
+#numberOfResults {
+    text-align: left;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.header {
+    background-color: #00a1b9;
+    color: #FFF;
+    padding: 50px;
+    margin-bottom: 0;
+}
+
+footer {
+    text-align: center;
+    color: #666;
+}
+
+footer a {
+    text-decoration: none;
+    color: #00a1b9;
+    transition: background-color 0.3s ease;
+}
+
+footer a:hover {
+    color: #00b1cc;
+}
+
+#navbar {
+    background-color: #00C0DE;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: -16px;
+    margin-bottom: 20px;
+}
+
+#navbar ul {
+    list-style-type: none;
+    overflow: hidden;
+}
+  
+#navbar li {
+    float: right;
+    position: relative;
+}
+
+#navbar li:not(:last-child)::after {
+    content:"";
+    background: #FFF;
+    position: absolute;
+    bottom: 25%;
+    top: 25%;
+    width: 1px;
+
+}
+  
+#navbar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+  
+#navbar  li  a:hover {
+    background-color: #00a1b9;
+}
+
+.chartContainer {
+    margin: 50px auto; /* Add some spacing between charts */
+    background-color: #E8F5F9;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+
+
+
+

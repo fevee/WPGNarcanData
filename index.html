@@ -1,0 +1,378 @@
+<!-------w------------
+
+    Assignment 4
+    Name: Faye Vaquilar
+    Date: March 8, 2024
+    Description: AJAX search form that queries the City of Winnipeg Open Data API and displays search results below the form. 
+--------------------->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="script.js"></script>
+		<link rel="stylesheet" href="main.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+		<title>Winnipeg Narcan Administration Data</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">
+				<h1>Winnipeg Narcan Administration Data</h1>
+				<h2>Examine Narcan administrations based on different criteria</h2>
+				<p>Naloxone, also known as Narcan, is a medication used to rapidly reverse opioid overdose. Naloxone is a critical tool in emergency situations involving opioid overdose, including overdoses caused by heroin, fentanyl, and prescription opioid medications.</p>
+				<p>This dataset shows total incidents where Narcan (Naloxone) was administered to a patient 1 or more times. Each record represents one patient. <br> Note: 'Incident Number' can appear more than once as each Incident Number can have more than one unique patient.
+				</p>
+			</div>
+		
+		<nav id="navbar">
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="analysis.html">Analysis</a></li>
+			</ul>
+		</nav>  
+			
+		<!-- Search area - age and gender -->
+		<div id="search">
+			<label for="age">Age:</label>
+			<select name="age" id="age">
+				<option value="">Select age</option>
+				<option value="0 to 4">0-4</option>
+				<option value="5 to 9">5-9</option>
+				<option value="10 to 14">10-14</option>
+				<option value="15 to 19">15-19</option>
+				<option value="20 to 24">20-24</option>
+				<option value="25 to 29">25-29</option>
+				<option value="30 to 34">30-34</option>
+				<option value="35 to 39">35-39</option>
+				<option value="40 to 44">40-44</option>
+				<option value="45 to 49">45-49</option>
+				<option value="50 to 54">50-54</option>
+				<option value="55 to 59">55-59</option>
+				<option value="60 to 64">60-64</option>
+				<option value="65 to 69">65-69</option>
+				<option value="70 to 74">70-74</option>
+				<option value="75 to 79">75-79</option>
+				<option value="80 to 84">80-84</option>
+				<option value="85 to 89">85-89</option>
+				<option value="90 to 94">90-94</option>
+				<option value="95 to 99">95-99</option>
+				<option value="Over 100">Over 100</option>
+			</select>
+			<br>
+
+			<label for="gender">Gender:</label>
+			<select name="gender" id="gender">
+				<option value="">Select gender</option>
+				<option value="Male">Male</option>
+				<option value="Female">Female</option>
+			</select>
+			<br>
+
+			<label for="neighborhood">Neighborhood:</label>
+			<select name="neighborhood" id="neighborhood">
+				<option value="">Select neighborhood</option>
+				<optgroup label="A">
+					<option value="Agassiz">Agassiz</option>
+					<option value="Airport">Airport</option>
+					<option value="Alpine Place">Alpine Place</option>
+					<option value="Amber Trails">Amber Trails</option>
+					<option value="Archwood">Archwood</option>
+					<option value="Armstrong Point">Armstrong Point</option>
+					<option value="Assiniboia Downs (New)">Assiniboia Downs (New)</option>
+				</optgroup>
+				<optgroup label="B">
+					<option value="Beaumont">Beaumont</option>
+					<option value="Betsworth">Betsworth</option>
+					<option value="Birchwood">Birchwood</option>
+					<option value="Booth">Booth</option>
+					<option value="Bridgwater Forest (New)">Bridgwater Forest (New)</option>
+					<option value="Broadway-Assiniboine">Broadway-Assiniboine</option>
+					<option value="Brockville">Brockville</option>
+					<option value="Brooklands">Brooklands</option>
+					<option value="Bruce Park">Bruce Park</option>
+					<option value="Buchanan">Buchanan</option>
+					<option value="Burrows Central">Burrows Central</option>
+					<option value="Burrows-Keewatin">Burrows-Keewatin</option>
+				</optgroup>
+				<optgroup label="C">
+					<option value="Canterbury Park">Canterbury Park</option>
+					<option value="Centennial">Centennial</option>
+					<option value="Central Park">Central Park</option>
+					<option value="Central River Heights">Central River Heights</option>
+					<option value="Central St. Boniface">Central St. Boniface</option>
+					<option value="Chalmers">Chalmers</option>
+					<option value="China Town">China Town</option>
+					<option value="Civic Centre (New)">Civic Centre (New)</option>
+					<option value="Cloutier Drive">Cloutier Drive</option>
+					<option value="Colony">Colony</option>
+					<option value="Crescent Park">Crescent Park</option>
+					<option value="Crescentwood">Crescentwood</option>
+					<option value="Crestview">Crestview</option>
+				</optgroup>
+				<optgroup label="D">
+					<option value="Dakota Crossing">Dakota Crossing</option>
+					<option value="Daniel McIntyre">Daniel McIntyre</option>
+					<option value="Deer Lodge">Deer Lodge</option>
+					<option value="Dufferin Industrial">Dufferin Industrial</option>
+					<option value="Dufferin">Dufferin</option>
+					<option value="Dufresne">Dufresne</option>
+				</optgroup>
+				<optgroup label="E">
+					<option value="Eaglemere">Eaglemere</option>
+					<option value="Earl Grey">Earl Grey</option>
+					<option value="East Elmwood">East Elmwood</option>
+					<option value="Ebby-Wentworth">Ebby-Wentworth</option>
+					<option value="Edgeland">Edgeland</option>
+					<option value="Elm Park">Elm Park</option>
+					<option value="Elmhurst">Elmhurst</option>
+					<option value="Eric Coy">Eric Coy</option>
+					<option value="Exchange District">Exchange District</option>
+				</optgroup>
+				<optgroup label="F">
+					<option value="Fairfield Park">Fairfield Park</option>
+					<option value="Fort Richmond">Fort Richmond</option>
+				</optgroup>
+				<optgroup label="G">
+					<option value="Garden City">Garden City</option>
+					<option value="Glendale">Glendale</option>
+					<option value="Glenelm">Glenelm</option>
+					<option value="Glenwood">Glenwood</option>
+					<option value="Grant Park">Grant Park</option>
+					<option value="Grassie">Grassie</option>
+				</optgroup>
+				<optgroup label="H">
+					<option value="Heritage Park">Heritage Park</option>
+					<option value="Holden">Holden</option>
+				</optgroup>
+				<optgroup label="I">
+					<option value="Inkster Gardens">Inkster Gardens</option>
+					<option value="Inkster-Faraday">Inkster-Faraday</option>
+					<option value="Island Lakes">Island Lakes</option>
+				</optgroup>
+				<optgroup label="J">
+					<option value="J.B. Mitchell">J.B. Mitchell</option>
+					<option value="Jameswood">Jameswood</option>
+					<option value="Jefferson">Jefferson</option>
+				</optgroup>
+				<optgroup label="K">
+					<option value="Kensington">Kensington</option>
+					<option value="Kern Park">Kern Park</option>
+					<option value="Kil-cona Park">Kil-cona Park</option>
+					<option value="Kildare-Redonda">Kildare-Redonda</option>
+					<option value="Kildonan Drive">Kildonan Drive</option>
+					<option value="King Edward">King Edward</option>
+					<option value="Kingston Crescent">Kingston Crescent</option>
+					<option value="Kirkfield">Kirkfield</option>
+				</optgroup>
+				<optgroup label="L">
+					<option value="Lavalee">Lavalee</option>
+					<option value="Leila North">Leila North</option>
+					<option value="Leila-McPhillips Triangle">Leila-McPhillips Triangle</option>
+					<option value="Linden Ridge">Linden Ridge</option>
+					<option value="Linden Woods">Linden Woods</option>
+					<option value="Logan-C.P.R">Logan-C.P.R</option>
+					<option value="Lord Roberts">Lord Roberts</option>
+					<option value="Lord Selkirk Park">Lord Selkirk Park</option>
+					<option value="Luxton">Luxton</option>
+				</optgroup>
+				<optgroup label="M">
+					<option value="Maginot">Maginot</option>
+					<option value="Mandalay West">Mandalay West</option>
+					<option value="Margaret Park">Margaret Park</option>
+					<option value="Marlton">Marlton</option>
+					<option value="Mathers">Mathers</option>
+					<option value="Maybank">Maybank</option>
+					<option value="McMillan">McMillan</option>
+					<option value="Meadowood">Meadowood</option>
+					<option value="Meadows">Meadows</option>
+					<option value="Melrose">Melrose</option>
+					<option value="Minnetonka">Minnetonka</option>
+					<option value="Minto">Minto</option>
+					<option value="Mission Gardens">Mission Gardens</option>
+					<option value="Mission Industrial">Mission Industrial</option>
+					<option value="Montcalm">Montcalm</option>
+					<option value="Munroe East">Munroe East</option>
+					<option value="Munroe West">Munroe West</option>
+					<option value="Mynarski">Mynarski</option>
+				</optgroup>
+				<optgroup label="N">
+					<option value="Niakwa Park">Niakwa Park</option>
+					<option value="Niakwa Place">Niakwa Place</option>
+					<option value="Norberry">Norberry</option>
+					<option value="Normand Park">Normand Park</option>
+					<option value="North Point Douglas">North Point Douglas</option>
+					<option value="North River Heights">North River Heights</option>
+					<option value="North St. Boniface">North St. Boniface</option>
+					<option value="Norwood East">Norwood East</option>
+					<option value="Norwood West">Norwood West</option>
+				</optgroup>
+				<optgroup label="O">
+					<option value="Old Tuxedo">Old Tuxedo</option>
+				</optgroup>
+				<optgroup label="P">
+					<option value="Parc La Salle">Parc La Salle</option>
+					<option value="Peguis">Peguis</option>
+					<option value="Pembina Strip">Pembina Strip</option>
+					<option value="Point Road">Point Road</option>
+					<option value="Polo Park">Polo Park</option>
+					<option value="Portage-Ellice">Portage-Ellice</option>
+					<option value="Pulberry">Pulberry</option>
+				</optgroup>
+				<optgroup label="R">
+					<option value="Radisson">Radisson</option>
+					<option value="Richmond Lakes">Richmond Lakes</option>
+					<option value="Richmond West">Richmond West</option>
+					<option value="Ridgedale">Ridgedale</option>
+					<option value="Ridgewood South">Ridgewood South</option>
+					<option value="River East">River East</option>
+					<option value="River Park South">River Park South</option>
+					<option value="River West Park">River West Park</option>
+					<option value="Riverbend">Riverbend</option>
+					<option value="Rivergrove">Rivergrove</option>
+					<option value="River-Osborne">River-Osborne</option>
+					<option value="Riverview">Riverview</option>
+					<option value="Robertson">Robertson</option>
+					<option value="Roblin Park">Roblin Park</option>
+					<option value="Rockwood">Rockwood</option>
+					<option value="Roslyn">Roslyn</option>
+					<option value="Rosser-Old Kildonan">Rosser-Old Kildonan</option>
+					<option value="Rossmere-A">Rossmere-A</option>
+					<option value="Rossmere-B">Rossmere-B</option>
+					<option value="Royalwood">Royalwood</option>
+				</optgroup>
+				<optgroup label="S">
+					<option value="Sage Creek (New)">Sage Creek (New)</option>
+					<option value="Sargent Park">Sargent Park</option>
+					<option value="Seven Oaks">Seven Oaks</option>
+					<option value="Shaughnessy Park">Shaughnessy Park</option>
+					<option value="Silver Heights">Silver Heights</option>
+					<option value="Sir John Franklin">Sir John Franklin</option>
+					<option value="South Point Douglas">South Point Douglas</option>
+					<option value="South Pointe (New)">South Pointe (New)</option>
+					<option value="South Portage">South Portage</option>
+					<option value="South River Heights">South River Heights</option>
+					<option value="South Tuxedo">South Tuxedo</option>
+					<option value="Southboine">Southboine</option>
+					<option value="Southdale">Southdale</option>
+					<option value="Southland Park">Southland Park</option>
+					<option value="Spence">Spence</option>
+					<option value="Springfield North">Springfield North</option>
+					<option value="Springfield South">Springfield South</option>
+					<option value="St. George">St. George</option>
+					<option value="St. John's Park">St. John's Park</option>
+					<option value="St. John's">St. John's</option>
+					<option value="St. Matthews">St. Matthews</option>
+					<option value="St. Norbert">St. Norbert</option>
+					<option value="St. Vital Perimeter South">St. Vital Perimeter South</option>
+					<option value="Stock Yards">Stock Yards</option>
+					<option value="Sturgeon Creek">Sturgeon Creek</option>
+				</optgroup>
+				<optgroup label="T">
+					<option value="Talbot-Grey">Talbot-Grey</option>
+					<option value="Templeton-Sinclair">Templeton-Sinclair</option>
+					<option value="The Maples">The Maples</option>
+					<option value="Tissot">Tissot</option>
+					<option value="Transcona South">Transcona South</option>
+					<option value="Tuxedo">Tuxedo</option>
+					<option value="Tyndall Park">Tyndall Park</option>
+				</optgroup>
+				<optgroup label="U">
+				</optgroup>
+				<optgroup label="V">
+					<option value="Valhalla">Valhalla</option>
+					<option value="Valley Gardens">Valley Gardens</option>
+					<option value="Varennes">Varennes</option>
+					<option value="Varsity View">Varsity View</option>
+					<option value="Vialoux">Vialoux</option>
+					<option value="Victoria Crescent">Victoria Crescent</option>
+					<option value="Victoria West">Victoria West</option>
+					<option value="Vista"></option>
+				</optgroup>
+				<optgroup label="W">
+					<option value="Waverley Heights">Waverley Heights</option>
+					<option value="Wellington Crescent">Wellington Crescent</option>
+					<option value="West Alexander">West Alexander</option>
+					<option value="West Broadway">West Broadway</option>
+					<option value="West Wolseley">West Wolseley</option>
+					<option value="Westdale">Westdale</option>
+					<option value="Weston">Weston</option>
+					<option value="Westwood">Westwood</option>
+					<option value="Whyte Ridge">Whyte Ridge</option>
+					<option value="Wildwood">Wildwood</option>
+					<option value="Wilkes South">Wilkes South</option>
+					<option value="William Whyte">William Whyte</option>
+					<option value="Windsor Park">Windsor Park</option>
+					<option value="Wolseley">Wolseley</option>
+					<option value="Woodhaven">Woodhaven</option>
+					<option value="Worthington">Worthington</option>
+				</optgroup>
+			</select>
+			
+			<!-- Search area - dispatch date -->
+			<label for="year">Year (YYYY):</label><br>
+			<input type="text" id="year" name="year" placeholder="YYYY" />
+			<br><br>		
+
+			<!-------------------
+				Search area - order by
+			--------------------->
+			<label for="orderBy">Order By:</label>			
+			<select name="orderBy" id="orderBy">
+				<option value="">Select criteria</option>
+				<option value="age">Age</option>
+				<option value="dispatch_date">Dispatch Date</option>
+				<option value="neighbourhood">Neighbourhood</option>
+			</select>
+			
+			<br>
+
+			<div id="orderDirectionDiv">
+				<input type="radio" name="orderDirection" id="asc" value=" asc">
+				<label for="asc">Ascending</label><br>
+				<input type="radio" name="orderDirection" id="desc" value=" desc">
+				<label for="desc">Descending</label><br><br>
+			</div>
+
+			<!-- Search area - search button -->
+			<button id="button" onclick="displayResults()">Search</button>
+			<button onclick="clearResults()">Clear Results</button>
+		</div>
+
+		<!-- Number of Results -->
+		<p id="numberOfResults"></p>
+
+		<!-- Table output -->
+		<table>
+			<thead>
+				<tr>
+					<th>Incident Number</th>
+					<th>Dispatch Date</th>
+					<th>Age</th>
+					<th>Gender</th>
+					<th>Narcan Administrations</th>
+					<th>Neighborhood</th>
+				</tr>
+			</thead>
+			<tbody id="output">
+			<!-- Search results will be displayed here -->
+			</tbody>
+		</table>
+
+		<div id="pagination">
+			<button id="prevPageBtn" onclick="previousPage()" style="display: none;">Previous Page</button>
+			<button id="nextPageBtn" onclick="nextPage()" style="display: none;">Next Page</button>
+		</div>
+
+		<footer>
+			<small>Data taken from <a href="https://data.winnipeg.ca/Fire-and-Paramedic-Service/Narcan-Administrations/qd6b-q49i/about_data">City of Winnipeg Open Data Portal</a>
+			</small>
+		</footer>
+		</div>
+		
+	</body>
+</html>
