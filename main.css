@@ -196,7 +196,6 @@ footer a:hover {
 }
 
 .chartContainer {
-    margin: 50px auto;
     background-color: #E8F5F9;
     padding: 40px;
     border-radius: 8px;
@@ -205,8 +204,28 @@ footer a:hover {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-bottom: 20px;
+    margin: 10px;
+    width: 100%;
+    box-sizing: border-box;
 }
+
+.chartWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.chartContainer {
+    width: 48%; 
+}
+
+@media (max-width: 768px) {
+    .chartContainer {
+        width: 100%; 
+    }
+}
+
 
 
 
