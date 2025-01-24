@@ -16,5 +16,8 @@ Access the live demo: https://wpgnarcandata.netlify.app/
   - Line chart for total incidents over time.
 - **Dynamic Sorting**: Order results by age, dispatch date, or neighborhood in ascending or descending order.
 
+![image](https://github.com/user-attachments/assets/c0ecd17d-6d81-4ebe-8631-fca4058eda14)
+
+
 
 
