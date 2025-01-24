@@ -191,7 +191,7 @@ footer a:hover {
 }
   
 #navbar  li  a:hover,
-#navbar li a.active  {
+.active  {
     background-color: #00a1b9;
 }
 
