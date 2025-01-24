@@ -9,6 +9,16 @@
 let currentPage = 1;
 const resultsPerPage = 50;
 
+let activePage = 0;
+for (var i = 0; i < document.links.length; i++) {
+    if (document.links[i].href === document.URL) {
+        activePage = i;
+    }
+}
+document.links[activePage].className = 'active';
+
+
+
 function displayResults() {
     // Clear previous results
     document.getElementById("output").innerHTML = "";

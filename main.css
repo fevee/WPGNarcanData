@@ -59,7 +59,7 @@ select, input[type="date"] {
 }
 
 button {
-    background-color: #00C0DE;
+    background-color: #03788a;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -90,7 +90,7 @@ th, td {
 }
 
 th {
-    background-color: #00C0DE;
+    background-color: #03505c;
     color: #fff;
 }
 
@@ -100,7 +100,7 @@ th {
 }
 
 #prevPageBtn, #nextPageBtn {
-    background-color: #00C0DE;
+    background-color: #03788a;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -129,10 +129,14 @@ th {
 }
 
 .header {
-    background-color: #00a1b9;
+    background-color: #026572;
     color: #FFF;
     padding: 50px;
     margin-bottom: 0;
+}
+
+.header p {
+    font-size: 1em;
 }
 
 footer {
@@ -142,7 +146,7 @@ footer {
 
 footer a {
     text-decoration: none;
-    color: #00a1b9;
+    color: #03788a;
     transition: background-color 0.3s ease;
 }
 
@@ -151,7 +155,7 @@ footer a:hover {
 }
 
 #navbar {
-    background-color: #00C0DE;
+    background-color: #03788a;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-top: -16px;
     margin-bottom: 20px;
@@ -186,12 +190,13 @@ footer a:hover {
     font-weight: bold;
 }
   
-#navbar  li  a:hover {
+#navbar  li  a:hover,
+#navbar li a.active  {
     background-color: #00a1b9;
 }
 
 .chartContainer {
-    margin: 50px auto; /* Add some spacing between charts */
+    margin: 50px auto;
     background-color: #E8F5F9;
     padding: 40px;
     border-radius: 8px;
